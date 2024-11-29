@@ -1,0 +1,16 @@
+Establish firestore in firebase
+
+create component for fetched tasks
+    it outputs task title
+    it outputs task body
+    it has delete button
+    it has status change: pending or completed
+        but the default state is pending
+    create a function that connects to the firestore
+
+create component for adding tasks
+    create a form element that has:
+        title
+        body
+        submit
+            when submitted, it will enter inputs in the firestore, refreshes the page to render the fetch functions
