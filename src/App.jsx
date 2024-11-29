@@ -4,6 +4,10 @@ import { db } from './firebase'
 import { collection, doc, getDocs, deleteDoc, addDoc, updateDoc, getDoc } from "firebase/firestore";
 
 function App() {
+  //test state variable
+  const [pend, setPend] = useState(true)
+
+
   //useState for fetching tasks
   const [tasks, setTasks] = useState([]);
 
@@ -12,7 +16,7 @@ function App() {
   const [body, setBody] = useState('');
 
   //Fetch the documents from the colletion
-  const fetchTasks = async ()=> {
+  const fetchTasks = async () => {
     const collectionRef = collection(db, 'tasks');
     const querySnapshot = await getDocs(collectionRef);
     const tasks = querySnapshot.docs.map((task) => ({
@@ -34,7 +38,7 @@ function App() {
     await deleteDoc(docRef)
 
     //Reflecting changes in user perspective
-    setTasks( (prevTasks) => prevTasks.filter(task => task.id !== id) )
+    setTasks((prevTasks) => prevTasks.filter(task => task.id !== id))
   }
 
   //Adding task function and reflecting changes in user perspective
@@ -51,35 +55,60 @@ function App() {
     alert('Task added')
   }
 
+  //changing field status
+  const handleStatus = async (id) => {
+    try {
+      const itemRef = doc(db, 'tasks', id);
+      const currentTask = await getDoc(itemRef);
+      const currentStatus = currentTask.data().status;
+      const newStatus = currentStatus === 'pending' ? 'completed' : 'pending';
+
+      await updateDoc(itemRef, {
+        status: newStatus,
+      });
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === id ? { ...task, status: newStatus } : task
+        )
+      );
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
   return (
     <>
       {/*ADDING TASKS COMPONENT*/}
-      <div className="formStyle"> 
+      <div className="formStyle">
         <h3>add task</h3>
         <form onSubmit={addTask}>
-          <input type="text" name="title" id="title" placeholder="title" value={title} required onChange={(e) => setTitle(e.target.value)}/>
+          <input type="text" name="title" id="title" placeholder="title" value={title} required onChange={(e) => setTitle(e.target.value)} />
           <textarea name="desc" id="desc" placeholder="descriton" value={body} required onChange={(e) => setBody(e.target.value)}></textarea>
-          <button type="submit" onClick={() => {setTimeout(()=> {window.location.reload()}, 1500)}}>Add task</button>
+          <button type="submit" onClick={() => { setTimeout(() => { window.location.reload() }, 1500) }}>Add task</button>
         </form>
       </div>
 
       {
         tasks.map((task) => (
-          <div key={task.id}> 
+          <div key={task.id}>
             <div>
-              Task title: {task.title} 
+              Task title: {task.title}
             </div>
             <div>
-              Task body: {task.body} 
+              Task body: {task.body}
             </div>
             <div>
-              Task status: {task.status} 
+              Task status
+              <button onClick={() => {handleStatus(task.id)}}>
+                {task.status}
+              </button>
             </div>
             <button onClick={() => deleteTask(task.id)}>
               Delete task
             </button>
           </div>
-          
+
         ))
       }
     </>
