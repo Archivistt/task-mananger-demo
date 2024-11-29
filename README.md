@@ -8,7 +8,7 @@ READ THE COMMENTS!!
 <li> Fetched firebase data </li>
 <li> Created delete task function </li>
 <li> Created add task function </li>
-<li> Created status change function </li>
+<li> Created status change function </li> <br><br>
 
 if you want to clone this, make sure you run the ff before proceeding to *npm run dev* <br>
 *npm install*
