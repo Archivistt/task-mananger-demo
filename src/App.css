@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.formStyle {
+  display: flex;
+  flex-direction: column;
+}

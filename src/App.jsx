@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { db } from './firebase'
-import { collection, doc, getDocs, deleteDoc, updateDoc, getDoc } from "firebase/firestore";
+import { collection, doc, getDocs, deleteDoc, addDoc, updateDoc, getDoc } from "firebase/firestore";
 
 function App() {
+  //useState for fetching tasks
   const [tasks, setTasks] = useState([]);
+
+  //useState for adding tasks
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
   //Fetch the documents from the colletion
   const fetchTasks = async ()=> {
@@ -32,8 +37,32 @@ function App() {
     setTasks( (prevTasks) => prevTasks.filter(task => task.id !== id) )
   }
 
+  //Adding task function and reflecting changes in user perspective
+  const addTask = async (e) => {
+    e.preventDefault();
+    const collectionRef = collection(db, 'tasks');
+    await addDoc(collectionRef, {
+      title: title,
+      body: body,
+      status: 'pending'
+    })
+    setTitle('')
+    setBody('')
+    alert('Task added')
+  }
+
   return (
     <>
+      {/*ADDING TASKS COMPONENT*/}
+      <div className="formStyle"> 
+        <h3>add task</h3>
+        <form onSubmit={addTask}>
+          <input type="text" name="title" id="title" placeholder="title" value={title} required onChange={(e) => setTitle(e.target.value)}/>
+          <textarea name="desc" id="desc" placeholder="descriton" value={body} required onChange={(e) => setBody(e.target.value)}></textarea>
+          <button type="submit">Add task</button>
+        </form>
+      </div>
+
       {
         tasks.map((task) => (
           <div key={task.id}> 

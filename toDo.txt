@@ -1,8 +1,6 @@
 create component for fetched tasks
     it has status change: pending or completed (FS field)
         but the default state is pending
-    it has a delete button
-        deletes the entire task document in the firestore
 
 create component for adding tasks
     create a form element that has:
