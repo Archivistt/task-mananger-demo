@@ -59,7 +59,7 @@ function App() {
         <form onSubmit={addTask}>
           <input type="text" name="title" id="title" placeholder="title" value={title} required onChange={(e) => setTitle(e.target.value)}/>
           <textarea name="desc" id="desc" placeholder="descriton" value={body} required onChange={(e) => setBody(e.target.value)}></textarea>
-          <button type="submit">Add task</button>
+          <button type="submit" onClick={() => {setTimeout(()=> {window.location.reload()}, 1500)}}>Add task</button>
         </form>
       </div>
 

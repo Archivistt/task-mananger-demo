@@ -6,3 +6,4 @@ A simple task management system using Firebase as Baas <br>
 <li> Pushed base files </li>
 <li> Fetched firebase data </li>
 <li> Created delete task function </li>
+<li> Created add task function </li>
