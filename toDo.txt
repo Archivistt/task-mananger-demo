@@ -1,13 +1,8 @@
-Establish firestore in firebase
-
 create component for fetched tasks
-    it outputs task title (FS field)
-    it outputs task body (FS field)
     it has status change: pending or completed (FS field)
         but the default state is pending
     it has a delete button
         deletes the entire task document in the firestore
-    create a function that connects to the firestore
 
 create component for adding tasks
     create a form element that has:

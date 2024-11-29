@@ -19,13 +19,24 @@ function App() {
 
   useEffect(() => {
     fetchTasks();
-  }, [])
+  }, []);
+
+  //Deleting tasks and removing them from firestore
+  const deleteTask = async (id) => {
+
+    //Removing the task from firestore
+    const docRef = doc(db, 'tasks', id)
+    await deleteDoc(docRef)
+
+    //Reflecting changes in user perspective
+    setTasks( (prevTasks) => prevTasks.filter(task => task.id !== id) )
+  }
 
   return (
     <>
       {
         tasks.map((task) => (
-          <div> 
+          <div key={task.id}> 
             <div>
               Task title: {task.title} 
             </div>
@@ -35,6 +46,9 @@ function App() {
             <div>
               Task status: {task.status} 
             </div>
+            <button onClick={() => deleteTask(task.id)}>
+              Delete task
+            </button>
           </div>
           
         ))
