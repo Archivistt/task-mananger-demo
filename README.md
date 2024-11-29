@@ -12,4 +12,7 @@ READ THE COMMENTS!!
 
 if you want to clone this, make sure you run the ff before proceeding to *npm run dev* <br>
 *npm install*
-*npm install vite*
+*npm install vite* <br>
+
+# watch the recording here! <br>
+https://drive.google.com/file/d/13m6s9w1X7KMpgfvadYWkZ4aCxrlAcD9x/view?usp=sharing
