@@ -34,9 +34,11 @@ function SignIn() {
     return (
         <>
             <h3>Sign In</h3>
-                <input type="email" required placeholder="user@email.com" onChange={(e) => {setEmail(e.target.value)}}/>
-                <input type="password" required placeholder="password" onChange={(e) => {setPassword(e.target.value)}}/>
-                <button onClick={handleSignIn}> Sign In </button>
+                <form onSubmit={handleSignIn}>
+                    <input type="email" required placeholder="user@email.com" onChange={(e) => {setEmail(e.target.value)}}/>
+                    <input type="password" required placeholder="password" onChange={(e) => {setPassword(e.target.value)}}/>
+                    <button type="submit"> Sign In </button>
+                </form>
                 <button onClick={handleSignInWithGoogle}> Sign In with google </button>
                 {error && <p>{error}</p>}
             <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>

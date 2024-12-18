@@ -19,5 +19,10 @@ if you want to clone this, make sure you run the ff before proceeding to *npm ru
 *npm install*
 *npm install vite* <br>
 
-# watch the recording here! (part 0) <br>
-https://drive.google.com/file/d/13m6s9w1X7KMpgfvadYWkZ4aCxrlAcD9x/view?usp=sharing
+## watch the recording here! <br> 
+(part 1) <br>
+https://drive.google.com/file/d/15RuaDU9jyJLNxGxMC2dESwSaLI1yCf29/view?usp=sharing
+
+(part 2) <br>
+https://drive.google.com/file/d/1aB6sE1IRnEEJ8v88EOZvf2HtQoylWvsm/view?usp=sharing
+
