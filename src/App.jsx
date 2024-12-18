@@ -22,7 +22,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<SignUp />} />
+          <Route path="/" element={<SignIn />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/tasklist" element={user ? <TaskList /> : <SignIn />} />

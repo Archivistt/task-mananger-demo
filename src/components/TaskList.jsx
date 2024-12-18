@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { db } from '../firebase'
 //these are the following functions that will be used:
 import { collection, doc, getDocs, deleteDoc, addDoc, updateDoc, getDoc } from "firebase/firestore";
+import SignOut from './SignOut';
+
 
 function TaskList() {
 
@@ -101,12 +103,13 @@ function TaskList() {
     <>
       {/*ADDING TASKS COMPONENT*/}
       <div className="formStyle">
-        <h3>add task</h3>
+        <h3>add task</h3> 
         <form onSubmit={addTask}>
           <input type="text" name="title" id="title" placeholder="title" value={title} required onChange={(e) => setTitle(e.target.value)} />
           <textarea name="desc" id="desc" placeholder="descriton" value={body} required onChange={(e) => setBody(e.target.value)}></textarea>
           <button type="submit" onClick={() => { setTimeout(() => { window.location.reload() }, 1500) }}>Add task</button>
         </form>
+        <SignOut />
       </div>
 
       {/*DISPLAYING THE TASKS*/}
