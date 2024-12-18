@@ -23,9 +23,12 @@ function SignUp() {
     return (
         <>
             <h3>Sign Up</h3>
-            <input type="email" required placeholder="user@email.com" onChange={(e) => {setEmail(e.target.value)}}/>
-            <input type="password" required placeholder="password" onChange={(e) => {setPassword(e.target.value)}}/>
-            <button onClick={handleSignUp}> Sign Up </button>
+            <form onSubmit={() => {handleSignUp}}>
+                <input type="email"  placeholder="user@email.com" onChange={(e) => {setEmail(e.target.value)}} required />
+                <input type="password"  placeholder="password" onChange={(e) => {setPassword(e.target.value)}} required />
+                <button type="submit"> Sign Up </button>
+            </form>
+            
             {error && <p>{error}</p>}
             <p>Already have an account? <Link to="/signin">Sign In</Link></p>
         </>
